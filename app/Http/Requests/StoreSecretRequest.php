@@ -23,13 +23,13 @@ class StoreSecretRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'password.required' => 'A password or secret text is required.',
-            'password.max' => 'The secret may not exceed 10,000 characters.',
-            'max_views.integer' => 'Maximum views must be a whole number.',
-            'max_views.min' => 'Maximum views must be at least 1.',
-            'max_views.max' => 'Maximum views may not exceed 100.',
-            'expires_at.date' => 'Please enter a valid expiry date.',
-            'expires_at.after' => 'The expiry date must be in the future.',
+            'password.required' => __('ui.validation.password_required'),
+            'password.max' => __('ui.validation.password_max'),
+            'max_views.integer' => __('ui.validation.max_views_integer'),
+            'max_views.min' => __('ui.validation.max_views_min'),
+            'max_views.max' => __('ui.validation.max_views_max'),
+            'expires_at.date' => __('ui.validation.expires_at_date'),
+            'expires_at.after' => __('ui.validation.expires_at_after'),
         ];
     }
 }
