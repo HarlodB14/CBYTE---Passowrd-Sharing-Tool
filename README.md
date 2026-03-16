@@ -1,4 +1,4 @@
-# CBYTE - Password Sharing Tool
+# SecretShare - Password Sharing Tool
 
 A Laravel 12 application to share sensitive secrets using one-time or limited-use links.
 Secrets are encrypted at rest and deleted after use.
@@ -26,14 +26,6 @@ Secrets are encrypted at rest and deleted after use.
 - Links use random 64-character tokens (`Str::random(64)`)
 - Inaccessible secrets (expired / exhausted) are removed on access
 - Secret creation endpoint is rate-limited (`throttle:secret-creation`)
-
-## SOLID-Oriented Design
-
-- **Single Responsibility**: validation in `StoreSecretRequest`, orchestration in `SecretController`, business logic in `SecretService`
-- **Open/Closed**: behavior can be extended through service implementation changes without controller rewrites
-- **Liskov Substitution**: controller depends on `SecretServiceInterface`, allowing compliant replacements
-- **Interface Segregation**: focused contract in `SecretServiceInterface`
-- **Dependency Inversion**: interface bound in `AppServiceProvider`, controller depends on abstraction
 
 ## Local Setup
 
@@ -81,19 +73,3 @@ php artisan queue:work --queue=default --tries=3
 ```
 
 Windows helper script: `setup-scheduler.bat`
-
-## Important Paths
-
-- Routes: `routes/web.php`
-- Controller: `app/Http/Controllers/SecretController.php`
-- Request validation: `app/Http/Requests/StoreSecretRequest.php`
-- Service contract: `app/Contracts/SecretServiceInterface.php`
-- Service implementation: `app/Services/SecretService.php`
-- Model: `app/Models/Secret.php`
-- Feature tests: `tests/Feature/SecretTest.php`
-
-## Status
-
-- Core functionality implemented
-- Feature test suite passing (`26 passed`)
-- Ready for assessment review
